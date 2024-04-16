@@ -1,8 +1,15 @@
 import '../constants.dart';
 import 'package:flutter/material.dart';
 
-class SliderAltura extends StatelessWidget {
-  const SliderAltura({super.key});
+class SliderAltura extends StatefulWidget {
+  const SliderAltura({Key? key}) : super(key: key);
+
+  @override
+  _SliderAlturaState createState() => _SliderAlturaState();
+}
+
+class _SliderAlturaState extends State<SliderAltura> {
+  double _slideValue = 120; // Valor inicial da altura
 
   @override
   Widget build(BuildContext context) {
@@ -13,13 +20,13 @@ class SliderAltura extends StatelessWidget {
           'ALTURA',
           style: labelTextStyle,
         ),
-        const Row(
+        Row(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.baseline,
           textBaseline: TextBaseline.alphabetic,
           children: <Widget>[
             Text(
-              '120',
+              _slideValue.toStringAsFixed(0), // Mostra a altura sem casas decimais
               style: numberTextStyle,
             ),
             Text(
@@ -30,9 +37,13 @@ class SliderAltura extends StatelessWidget {
         ),
         Slider(
           min: 120,
-          max: 220,
-          value: 120,
-          onChanged: (double value) {},
+          max: 250,
+          value: _slideValue,
+          onChanged: (double value) {
+            setState(() {
+              _slideValue = value; // Atualiza a altura conforme o usuário move o slider
+            });
+          },
         )
       ],
     );

@@ -3,9 +3,7 @@ import '../components/contador.dart';
 import '../components/custom_card.dart';
 import '../components/gender_content.dart';
 import '../components/modal_result.dart';
-
 import '../components/slider_altura.dart';
-
 import 'package:flutter/material.dart';
 
 enum Genero {
